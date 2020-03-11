@@ -3,13 +3,15 @@ import Button from 'react-bootstrap/Button';
 
 const SearchBar = props => {
     const [searchItem,setSearchItem] = useState('');
+
     const handleChange = e => {
         let searchTerm = e.target.value;
         setSearchItem(searchTerm);
     }
 
     const handleSearch = () => {
-        props.handleSearch(searchItem);
+        props.changeSearchCounter();
+        props.handleSearchTerm(searchItem);
     }
 
     return (

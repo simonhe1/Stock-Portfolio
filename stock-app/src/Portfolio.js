@@ -16,9 +16,14 @@ const Portfolio = props => {
         else setAmountToBuy(++amount);
     }
 
+    const setMax = () => {
+        setAmountToBuy(maxQuantity);
+    }
+
     const handleFinalize = () => {
         let moneySpent = (amountToBuy * props.price).toFixed(2);
-        props.handleBuy(props.stockName,moneySpent);
+        const { stockName } = props;
+        props.handleBuy(stockName,amountToBuy,moneySpent);
         setAmountToBuy(0);
     }
 
@@ -38,6 +43,7 @@ const Portfolio = props => {
                                 <Button onClick={e => buyLess()}>-</Button>
                                 <input type="number" value={amountToBuy} disabled/>
                                 <Button onClick={e => buyMore()}>+</Button>
+                                <Button onClick={e => setMax()}>Max</Button>
                             </td>
                         </tr>
                         <tr>
